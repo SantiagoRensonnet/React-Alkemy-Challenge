@@ -1,0 +1,66 @@
+.header {
+  height: 80px;
+  box-sizing: border-box;
+  height: 64px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2.5rem;
+  background-color: #ffffff;
+  overflow: visible;
+  align-content: center;
+  flex-wrap: nowrap;
+  gap: 10;
+  border-color: #eee;
+  border-style: solid;
+  border-top-width: 0px;
+  border-bottom-width: 1px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  font-family: "Manrope", sans-serif;
+}
+.header--title {
+  font-size: calc(1.5rem * 0.9);
+  font-weight: 700;
+  color: #333333;
+  cursor: default;
+}
+.header--navbar {
+  width: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.logged {
+  width: 151px;
+  cursor: default;
+}
+.avatar {
+  width: 28px;
+  height: 28px;
+  background-color: #6133ed;
+  overflow: visible;
+  aspect-ratio: 1 / 1;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.initials {
+  width: auto; /* 18px */
+  height: auto; /* 14px */
+  white-space: pre;
+  font-weight: 600;
+  font-style: normal;
+  font-family: "Be Vietnam Pro", serif;
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0px;
+  line-height: 1.2;
+}
+.header--navbar a {
+  color: #666666;
+}
