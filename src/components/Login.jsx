@@ -1,35 +1,28 @@
 //Libraries
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import MsgModal from "./MsgModal";
+import MsgModal from "./Modals/MsgModal";
+import Modal from "react-modal";
 //Styles
 import "../css/Login.css";
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
+
 Modal.setAppElement("#root");
 
 export default function Login() {
+  //Modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
-
   function openModal() {
     setModalIsOpen(true);
   }
   function closeModal() {
     setModalIsOpen(false);
   }
+
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+
   //Event Handlers
   //Submit
   function submitHandler(event) {

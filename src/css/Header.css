@@ -1,16 +1,14 @@
 .header {
-  height: 80px;
-  box-sizing: border-box;
-  height: 64px;
+  z-index: 100;
+  height: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   padding: 0 2.5rem;
   background-color: #ffffff;
   overflow: visible;
-  align-content: center;
-  flex-wrap: nowrap;
   gap: 10;
   border-color: #eee;
   border-style: solid;
@@ -19,6 +17,9 @@
   border-left-width: 0px;
   border-right-width: 0px;
   font-family: "Manrope", sans-serif;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .header--title {
   font-size: calc(1.5rem * 0.9);

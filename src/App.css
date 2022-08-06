@@ -20,10 +20,13 @@
   justify-content: space-between;
 }
 .main {
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding: 5.3333rem 0;
 }
 .card {
   padding: 2em;
@@ -31,6 +34,7 @@
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
 }
+
 .card:hover {
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
 }

@@ -1,7 +1,6 @@
 .footer {
-  height: 80px;
+  height: 5rem;
   box-sizing: border-box;
-  width: 100%;
   height: min-content; /* 0px */
   display: flex;
   flex-direction: row;
@@ -19,6 +18,9 @@
   border-bottom-width: 0px;
   border-left-width: 0px;
   border-right-width: 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .footer--title {
   font-size: 1rem;

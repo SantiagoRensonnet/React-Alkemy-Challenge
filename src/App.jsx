@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Login from "./components/Login";
-import Listado from "./components/Listado";
+import MovieList from "./components/MovieList";
 //Styles
 import "./App.css";
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/listado" element={<Listado />} />
+          <Route path="/listado" element={<MovieList />} />
         </Routes>
       </main>
       <Footer />

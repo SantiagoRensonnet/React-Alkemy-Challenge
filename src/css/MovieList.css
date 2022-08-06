@@ -1,0 +1,25 @@
+.table {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+/* Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) {
+  .table {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Small Devices */
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .table {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .table {
+    display: block;
+    margin: 0;
+  }
+}
