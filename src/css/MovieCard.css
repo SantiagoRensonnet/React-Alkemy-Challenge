@@ -2,6 +2,11 @@
   font-family: "Be Vietnam Pro", serif;
   position: relative;
   z-index: 0;
+  --card-size: clamp(
+    calc(100vh - 11rem),
+    calc(100vh - 10rem),
+    calc(100vh - 6rem)
+  );
 }
 
 .movie-card--click-me {
@@ -28,8 +33,8 @@
 .movie-card--content {
   /* size */
   /* width: 270px; */
-  height: calc(100vh - 10rem);
-  aspect-ratio: 9 / 16;
+  height: var(--card-size);
+  /* aspect-ratio: 9 / 16; */
 
   /* flex */
   display: flex;
@@ -59,7 +64,7 @@
 }
 
 .movie-card--info {
-  height: 50%;
+  height: calc(var(--card-size) / 2);
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -68,7 +73,7 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 .movie-card--title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: -1px;
   /* line-height: 1.2; */

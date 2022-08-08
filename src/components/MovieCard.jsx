@@ -1,6 +1,13 @@
-import "../css/Movie.css";
+import "../css/MovieCard.css";
 
-export default function MovieCard({ id, title, image, overview, onCardClick }) {
+export default function MovieCard({
+  id,
+  title,
+  image,
+  overview,
+  maxChar,
+  onCardClick,
+}) {
   return overview ? (
     <div className="movie">
       <div className="movie-card">
@@ -12,8 +19,8 @@ export default function MovieCard({ id, title, image, overview, onCardClick }) {
           <div className="movie-card--info">
             <h2 className="movie-card--title">{title}</h2>
             <p className="movie-card--description">
-              {overview.length > 320
-                ? overview.slice(0, 320) + " (...)"
+              {maxChar && overview.length > maxChar
+                ? overview.slice(0, maxChar) + " (...)"
                 : overview}
             </p>
           </div>

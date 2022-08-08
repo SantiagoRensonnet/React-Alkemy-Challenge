@@ -1,6 +1,6 @@
 // Libraries
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ErrorModal from "./Modals/ErrorModal";
 import Modal from "react-modal";
@@ -16,6 +16,8 @@ export default function MovieList() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [errorData, setErrorData] = useState({});
+  const navigate = useNavigate();
+
   function openModal() {
     setModalIsOpen(true);
   }
@@ -23,10 +25,9 @@ export default function MovieList() {
     setModalIsOpen(false);
   }
   function onCardClick(id) {
-    console.log(id);
+    navigate(`/detalle/${id}`);
   }
   const token = localStorage.getItem("token");
-
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
@@ -54,6 +55,7 @@ export default function MovieList() {
       : null;
     return (
       <MovieCard
+        maxChar={320}
         onCardClick={onCardClick}
         id={movie.id}
         key={index}
@@ -71,7 +73,11 @@ export default function MovieList() {
         openModal={modalIsOpen}
         closeModal={closeModal}
       />
-      {movieData && <div className="table">{movieList}</div>}
+      {movieData && (
+        <div className="list-container">
+          <div className="table">{movieList}</div>
+        </div>
+      )}
     </>
   ) : (
     <Navigate replace to="/login" />

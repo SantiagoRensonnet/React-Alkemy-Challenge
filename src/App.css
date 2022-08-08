@@ -5,6 +5,11 @@
 }
 @font-face {
   font-family: "Manrope";
+  font-weight: 600;
+  src: url("./assets/fonts/Manrope-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Manrope";
   font-weight: 500;
   src: url("./assets/fonts/Manrope-Medium.ttf");
 }
@@ -13,6 +18,7 @@
   font-weight: 500;
   src: url("./assets/fonts/BeVietnamPro-Medium.ttf");
 }
+
 .app-container {
   height: 100vh;
   display: flex;

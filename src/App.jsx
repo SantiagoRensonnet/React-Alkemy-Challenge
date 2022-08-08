@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import MovieList from "./components/MovieList";
+import MovieDetail from "./components/MovieDetail";
+
 //Styles
 import "./App.css";
 function App() {
@@ -17,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/listado" element={<MovieList />} />
+          <Route path="/detalle/:movieId" element={<MovieDetail />} />
         </Routes>
       </main>
       <Footer />
