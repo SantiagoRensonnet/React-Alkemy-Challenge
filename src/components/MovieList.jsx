@@ -11,7 +11,7 @@ import "../css/MovieList.css";
 
 Modal.setAppElement("#root");
 
-export default function MovieList() {
+export default function MovieList({ token }) {
   //Modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -25,9 +25,9 @@ export default function MovieList() {
     setModalIsOpen(false);
   }
   function onCardClick(id) {
-    navigate(`/detalle/${id}`);
+    navigate(`/detalle?movieID=${id}`);
   }
-  const token = localStorage.getItem("token");
+
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
@@ -66,8 +66,9 @@ export default function MovieList() {
     );
   });
 
-  return token ? (
+  return (
     <>
+      {!token && <Navigate replace to="/login" />}
       <ErrorModal
         errorData={errorData}
         openModal={modalIsOpen}
@@ -79,7 +80,5 @@ export default function MovieList() {
         </div>
       )}
     </>
-  ) : (
-    <Navigate replace to="/login" />
   );
 }

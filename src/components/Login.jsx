@@ -9,7 +9,7 @@ import "../css/Login.css";
 
 Modal.setAppElement("#root");
 
-export default function Login() {
+export default function Login({ token, updateToken }) {
   //Modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -20,12 +20,11 @@ export default function Login() {
     setModalIsOpen(false);
   }
 
-  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   //Event Handlers
   //Submit
-  function submitHandler(event) {
+  const submitHandler = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -55,12 +54,12 @@ export default function Login() {
 
     axios
       .post("http://challenge-react.alkemy.org/", { email, password })
-      .then((res) => localStorage.setItem("token", res.data.token))
+      .then((res) => updateToken(res.data.token))
       .then(() => {
         navigate("/listado");
       })
       .catch((error) => console.log(error.code, error.message));
-  }
+  };
 
   //redirect to "listado" if token is already saved in local storage (keep open feature)
   useEffect(() => {

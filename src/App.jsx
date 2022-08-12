@@ -1,4 +1,5 @@
 //Libraries
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 //Components
 import Header from "./components/Header";
@@ -10,16 +11,25 @@ import MovieDetail from "./components/MovieDetail";
 
 //Styles
 import "./App.css";
+
 function App() {
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
+  function updateToken(token) {
+    setToken(token);
+    sessionStorage.setItem("token", token);
+  }
   return (
     <div className="app-container">
-      <Header />
+      <Header token={token} />
       <main className="main">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/listado" element={<MovieList />} />
-          <Route path="/detalle/:movieId" element={<MovieDetail />} />
+          <Route
+            path="/login"
+            element={<Login token={token} updateToken={updateToken} />}
+          />
+          <Route path="/listado" element={<MovieList token={token} />} />
+          <Route path="/detalle" element={<MovieDetail token={token} />} />
         </Routes>
       </main>
       <Footer />
