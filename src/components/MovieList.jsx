@@ -11,7 +11,7 @@ import "../css/MovieList.css";
 
 Modal.setAppElement("#root");
 
-export default function MovieList({ token }) {
+export default function MovieList({ token, endPoint }) {
   //Modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
@@ -31,40 +31,36 @@ export default function MovieList({ token }) {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
-    const apiAth = "d76c5df85f84510c22bbc25e156327ce";
-    const language = "es-ES";
-    // const apiSort = "&sort_by=" + "release_date.desc";
-    const endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=${apiAth}&language=${language}`;
-
     axios
       .get(endPoint)
       .then((res) => {
         setMovieData(res.data.results);
       })
       .catch((error) => {
-        console.log(error);
         setErrorData({ code: error.code, message: error.message });
         openModal();
       });
-  }, []);
+  }, [endPoint]);
 
-  const movieList = movieData.map((movie, index) => {
-    const path = "https://image.tmdb.org/t/p/original" + movie.poster_path;
-    const movieImg = movie.poster_path
-      ? { backgroundImage: `url(${path})` }
-      : null;
-    return (
-      <MovieCard
-        maxChar={320}
-        onCardClick={onCardClick}
-        id={movie.id}
-        key={index}
-        image={movieImg}
-        title={movie.original_title}
-        overview={movie.overview}
-      />
-    );
-  });
+  const movieList = movieData
+    .filter((movie) => movie.overview && movie.poster_path)
+    .map((movie, index) => {
+      const path = "https://image.tmdb.org/t/p/original" + movie.poster_path;
+      const movieImg = movie.poster_path
+        ? { backgroundImage: `url(${path})` }
+        : null;
+      return (
+        <MovieCard
+          maxChar={320}
+          onCardClick={onCardClick}
+          id={movie.id}
+          key={index}
+          image={movieImg}
+          title={movie.original_title}
+          overview={movie.overview}
+        />
+      );
+    });
 
   return (
     <>

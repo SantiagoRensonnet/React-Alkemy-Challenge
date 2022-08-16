@@ -56,7 +56,7 @@ export default function Login({ token, updateToken }) {
       .post("http://challenge-react.alkemy.org/", { email, password })
       .then((res) => updateToken(res.data.token))
       .then(() => {
-        navigate("/listado");
+        navigate("/");
       })
       .catch((error) => console.log(error.code, error.message));
   };

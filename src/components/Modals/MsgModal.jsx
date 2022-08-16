@@ -15,13 +15,13 @@ const customStyles = {
     alignItems: "center",
   },
 };
-const MsgModal = ({ msg, openModal, closeModal }) => {
+const MsgModal = ({ msg, openModal, closeModal, style }) => {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "black";
+    subtitle.style.color = style.color || "black";
     subtitle.style.marginBottom = "1rem";
   }
 
