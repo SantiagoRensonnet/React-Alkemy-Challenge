@@ -1,5 +1,7 @@
 import "../css/MovieCard.css";
-
+//Assets
+import emptyHeart from "../assets/icons/favorite/heart-regular.svg";
+import fullHeart from "../assets/icons/favorite/heart-solid.svg";
 export default function MovieCard({
   id,
   title,
@@ -11,6 +13,24 @@ export default function MovieCard({
   return overview ? (
     <div className="movie">
       <div className="movie-card">
+        <div className="movie-card--favorite-container">
+          <div
+            alt="empty-heart"
+            id={`heart-id-${id}`}
+            className="movie-card--favorite-heart"
+            style={{ backgroundImage: `url(${emptyHeart})` }}
+            onMouseOver={() => {
+              document.getElementById(
+                `heart-id-${id}`
+              ).style.backgroundImage = `url(${fullHeart})`;
+            }}
+            onMouseOut={() => {
+              document.getElementById(
+                `heart-id-${id}`
+              ).style.backgroundImage = `url(${emptyHeart})`;
+            }}
+          ></div>
+        </div>
         <div className="movie-card--click-me" onClick={() => onCardClick(id)}>
           <h1>+</h1>
         </div>

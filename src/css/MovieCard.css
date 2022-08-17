@@ -8,6 +8,31 @@
     calc(100vh - 6rem)
   );
 }
+.movie-card--favorite-container {
+  width: 2em;
+  height: 2em;
+  background-color: white;
+  overflow: visible;
+  aspect-ratio: 1 / 1;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  /* top: calc(var(--card-size) / 27); */
+  top: calc(1 / 27 * 100%);
+  left: calc(23 / 27 * 100%);
+  opacity: 0.89;
+  z-index: 1;
+}
+.movie-card--favorite-heart {
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: inherit;
+}
 
 .movie-card--click-me {
   width: 100%;
@@ -23,6 +48,7 @@
   border-radius: 18px;
   opacity: 0;
   transition: 0.3s;
+  cursor: default;
 }
 .movie-card--click-me h1 {
   color: rgba(255, 255, 255, 0.8);
