@@ -2,9 +2,9 @@
 
 import { Link } from "react-router-dom";
 //Components
-import SearchBar from "./SearchBar";
+import SearchBar from "../utils/SearchBar";
 //Styles
-import "../css/Header.css";
+import "../../css/common/Header.css";
 
 export default function Header({
   token,

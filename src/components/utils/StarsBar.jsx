@@ -1,7 +1,7 @@
-import emptyStar from "../assets/icons/stars/star-regular.svg";
-import halfStar from "../assets/icons/stars/star-half-stroke-solid.svg";
-import fullStar from "../assets/icons/stars/star-solid.svg";
-import "../css/StarsBar.css";
+import emptyStar from "../../assets/icons/stars/star-regular.svg";
+import halfStar from "../../assets/icons/stars/star-half-stroke-solid.svg";
+import fullStar from "../../assets/icons/stars/star-solid.svg";
+import "../../css/utils/StarsBar.css";
 function convertToStars(rate) {
   const base = Math.floor(rate / 2);
   const decimal = rate / 2 - base >= 0.4 && rate / 2 - base <= 0.6 ? 0.5 : 0;

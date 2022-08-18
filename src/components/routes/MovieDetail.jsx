@@ -3,9 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 // Components
-import StarsBar from "./StarsBar";
+import StarsBar from "../utils/StarsBar";
 // Styles
-import "../css/MovieDetail.css";
+import "../../css/routes/MovieDetail.css";
 
 export default function MovieDetail({ token }) {
   const [movieDetails, setMovieDetails] = useState({});

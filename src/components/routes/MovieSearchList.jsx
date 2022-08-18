@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import MovieList from "./MovieList";
+import MovieList from "../containers/MovieList";
 
 export default function MovieSearchList({ token }) {
   const apiAth = "d76c5df85f84510c22bbc25e156327ce";

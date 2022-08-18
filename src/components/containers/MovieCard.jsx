@@ -1,7 +1,8 @@
-import "../css/MovieCard.css";
+import "../../css/containers/MovieCard.css";
 //Assets
-import emptyHeart from "../assets/icons/favorite/heart-regular.svg";
-import fullHeart from "../assets/icons/favorite/heart-solid.svg";
+import emptyHeart from "../../assets/icons/favorite/heart-regular.svg";
+import fullHeart from "../../assets/icons/favorite/heart-solid.svg";
+import { useState, useEffect } from "react";
 export default function MovieCard({
   id,
   title,
@@ -9,25 +10,45 @@ export default function MovieCard({
   overview,
   maxChar,
   onCardClick,
+  favoriteMoviesData,
+  onHeartClick,
 }) {
+  const [isFavorite, setIsFavorite] = useState(
+    localStorage.getItem("favs")
+      ? JSON.parse(localStorage.getItem("favs")).some(
+          (movie) => movie.id === id
+        )
+      : false
+  );
+
+  //Event Handlers (Favorites)
+  function onFavoriteHover() {
+    document.getElementById(`heart-id-${id}`).style.backgroundImage = isFavorite
+      ? `url(${emptyHeart})`
+      : `url(${fullHeart})`;
+  }
+  function onFavoriteHoverOut() {
+    document.getElementById(`heart-id-${id}`).style.backgroundImage = isFavorite
+      ? `url(${fullHeart})`
+      : `url(${emptyHeart})`;
+  }
+  let style = isFavorite
+    ? { backgroundImage: `url(${fullHeart})` }
+    : { backgroundImage: `url(${emptyHeart})` };
   return overview ? (
     <div className="movie">
       <div className="movie-card">
         <div className="movie-card--favorite-container">
           <div
-            alt="empty-heart"
+            alt={isFavorite ? "full-heart" : "empty-heart"}
             id={`heart-id-${id}`}
             className="movie-card--favorite-heart"
-            style={{ backgroundImage: `url(${emptyHeart})` }}
-            onMouseOver={() => {
-              document.getElementById(
-                `heart-id-${id}`
-              ).style.backgroundImage = `url(${fullHeart})`;
-            }}
-            onMouseOut={() => {
-              document.getElementById(
-                `heart-id-${id}`
-              ).style.backgroundImage = `url(${emptyHeart})`;
+            style={style}
+            onMouseOver={onFavoriteHover}
+            onMouseOut={onFavoriteHoverOut}
+            onClick={(e) => {
+              onHeartClick(e, isFavorite, id, title, image, overview);
+              setIsFavorite((isFav) => !isFav); //toggle favorite
             }}
           ></div>
         </div>

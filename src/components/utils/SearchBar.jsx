@@ -1,13 +1,13 @@
 //Assets
-import searchLogoSolid from "../assets/icons/search-bar/magnifying-glass-solid.svg";
-import searchLogoRegular from "../assets/icons/search-bar/magnifying-glass-regular.svg";
+import searchLogoSolid from "../../assets/icons/search-bar/magnifying-glass-solid.svg";
+import searchLogoRegular from "../../assets/icons/search-bar/magnifying-glass-regular.svg";
 //Libraries
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MsgModal from "./Modals/MsgModal";
+import MsgModal from "../Modals/MsgModal";
 import Modal from "react-modal";
 //Styles
-import "../css/SearchBar.css";
+import "../../css/utils/SearchBar.css";
 
 export default function SearchBar({
   isSearchBarSelected,

@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import MsgModal from "./Modals/MsgModal";
+import MsgModal from "../Modals/MsgModal";
 import Modal from "react-modal";
 //Styles
-import "../css/Login.css";
+import "../../css/routes/Login.css";
 
 Modal.setAppElement("#root");
 
