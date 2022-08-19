@@ -19,7 +19,7 @@ export default function SearchBar({
   //Modal setup
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
-  const [modalStyle, setModalStyle] = useState({});
+
   function openModal() {
     setModalIsOpen(true);
   }
@@ -31,10 +31,7 @@ export default function SearchBar({
   const submitHandler = (event) => {
     event.preventDefault();
     if (!searchTerm.trim()) {
-      setModalStyle({ color: "#9363e7" });
-      setModalMsg(
-        "If you don't know where to go, it doesn't matter which road you've taken"
-      );
+      setModalMsg("Please enter the search field");
       openModal();
       return;
     }
@@ -43,10 +40,9 @@ export default function SearchBar({
   return (
     <div className={`search-bar ${isSearchBarSelected && "selected"}`}>
       <MsgModal
-        msg={modalMsg}
+        description={modalMsg}
         openModal={modalIsOpen}
         closeModal={closeModal}
-        style={modalStyle}
       />
       <form onSubmit={submitHandler}>
         <div

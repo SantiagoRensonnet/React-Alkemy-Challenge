@@ -24,10 +24,20 @@ const customStyles = {
     alignItems: "flex-start",
   },
 };
-const MsgModal = ({ header, description, openModal, closeModal }) => {
+const ChoiceModal = ({
+  header,
+  description,
+  openModal,
+  closeModal,
+  chooseYes,
+  chooseNo,
+}) => {
   let title;
   let subtitle;
-  let btn;
+  let choiceContainer;
+  let yesBtn;
+  let noBtn;
+  let closeBtn;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function afterOpenModal() {
@@ -45,17 +55,31 @@ const MsgModal = ({ header, description, openModal, closeModal }) => {
       subtitle.style.fontWeight = "400";
       subtitle.style.marginBottom = "1rem";
     }
+    //yes and no buttons
+    //container
+    choiceContainer.style.width = "100%";
+    choiceContainer.style.display = "flex";
+    choiceContainer.style.justifyContent = "center";
+    //yes
+    yesBtn.style.backgroundColor = "#4F4F4F";
+    yesBtn.style.color = "#F5F5F5";
+    yesBtn.style.margin = "0 0.5rem";
 
-    //button style
-    btn.style.alignSelf = "flex-end";
-    btn.style.backgroundColor = "#E5E5E5";
-    btn.style.width = "1.5rem";
-    btn.style.height = "1.5rem";
-    btn.style.borderRadius = "1.8rem";
-    btn.style.padding = "4px";
-    btn.style.display = "flex";
-    btn.style.justifyContent = "center";
-    btn.style.alignItems = "center";
+    //no
+    // noBtn.style.backgroundColor = "white";
+    noBtn.style.color = "#4F4F4F";
+    noBtn.style.margin = "0 0.5rem";
+
+    //close button style
+    closeBtn.style.alignSelf = "flex-end";
+    closeBtn.style.backgroundColor = "#E5E5E5";
+    closeBtn.style.width = "1.5rem";
+    closeBtn.style.height = "1.5rem";
+    closeBtn.style.borderRadius = "1.8rem";
+    closeBtn.style.padding = "4px";
+    closeBtn.style.display = "flex";
+    closeBtn.style.justifyContent = "center";
+    closeBtn.style.alignItems = "center";
   }
 
   return (
@@ -67,15 +91,34 @@ const MsgModal = ({ header, description, openModal, closeModal }) => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button ref={(_btn) => (btn = _btn)} onClick={closeModal}>
+        <button
+          ref={(_closeBtn) => (closeBtn = _closeBtn)}
+          onClick={closeModal}
+        >
           <img src={closeLogo} alt="close" />
         </button>
         {header && <h1 ref={(_title) => (title = _title)}>{header}</h1>}
         {description && (
           <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{description}</h2>
         )}
+        <div ref={(_choiceContainer) => (choiceContainer = _choiceContainer)}>
+          <button
+            ref={(_yesBtn) => (yesBtn = _yesBtn)}
+            onClick={chooseYes}
+            className="yes-btn"
+          >
+            YES
+          </button>
+          <button
+            ref={(_noBtn) => (noBtn = _noBtn)}
+            onClick={chooseNo}
+            className="no-btn"
+          >
+            NO
+          </button>
+        </div>
       </Modal>
     </>
   );
 };
-export default MsgModal;
+export default ChoiceModal;

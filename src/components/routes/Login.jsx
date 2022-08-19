@@ -34,19 +34,19 @@ export default function Login({ token, updateToken }) {
     // const token = JSON.parse(localStorage.getItem("token")) || "";
     //user-side validations
     if (email === "" || password === "") {
-      setModalMsg("Los campos no pueden estar vacíos");
+      setModalMsg("These Fields Cannot Be Empty");
       openModal();
       return;
     }
     //test regular expression with email -> false means that email doesn't pass the test
     if (email !== "" && regexEmail.test(email) === false) {
-      setModalMsg("Debes escribir una dirección de correo válida");
+      setModalMsg("Invalid Email Address");
       openModal();
 
       return;
     }
     if (email !== "challenge@alkemy.org" || password !== "react") {
-      setModalMsg("Credenciales Inválidas");
+      setModalMsg("Invalid Credentials");
       openModal();
 
       return;
@@ -71,24 +71,24 @@ export default function Login({ token, updateToken }) {
   return (
     <div className="login card">
       <MsgModal
-        msg={modalMsg}
+        description={modalMsg}
         openModal={modalIsOpen}
         closeModal={closeModal}
       />
-      <h2 className="form--title">Formulario Login</h2>
+      {/* <h2 className="form--title">Title</h2> */}
       <form onSubmit={submitHandler} method="post" className="form">
         <label className="input">
-          <span>Correo electrónico:</span>
+          <span>Email</span>
           <br />
           <input type="text" name="email" autoComplete="off" />
         </label>
         <label className="input">
-          <span>Contraseña:</span>
+          <span>Password</span>
           <br />
           <input type="password" name="password" autoComplete="off" />
         </label>
         <button className="form--btn" type="submit">
-          Ingresar
+          Login
         </button>
       </form>
     </div>

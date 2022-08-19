@@ -49,6 +49,17 @@ button {
 button:hover {
   border-color: #646cff;
 }
+.danger_btn:hover {
+  border-color: #e61e00;
+}
+.no-btn,
+.yes-btn {
+  border: 1px solid #4f4f4f;
+}
+.no-btn {
+  background-color: white;
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

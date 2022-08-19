@@ -10,7 +10,6 @@ export default function MovieCard({
   overview,
   maxChar,
   onCardClick,
-  favoriteMoviesData,
   onHeartClick,
 }) {
   const [isFavorite, setIsFavorite] = useState(
@@ -48,7 +47,8 @@ export default function MovieCard({
             onMouseOut={onFavoriteHoverOut}
             onClick={(e) => {
               onHeartClick(e, isFavorite, id, title, image, overview);
-              setIsFavorite((isFav) => !isFav); //toggle favorite
+              document.location.pathname !== "/favorites" &&
+                setIsFavorite((isFav) => !isFav); //toggle favorite
             }}
           ></div>
         </div>

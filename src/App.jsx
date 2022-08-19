@@ -6,9 +6,10 @@ import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import Home from "./components/routes/Home";
 import Login from "./components/routes/Login";
-import MovieSearchList from "./components/routes/MovieSearchList";
-import MovieTrendList from "./components/routes/MovieTrendList";
-import MovieDetail from "./components//routes/MovieDetail";
+import SearchList from "./components/routes/SearchList";
+import TrendList from "./components/routes/TrendList";
+import FavoritesList from "./components/routes/FavoritesList";
+import MovieDetail from "./components/routes/MovieDetail";
 
 //Styles
 import "./App.css";
@@ -40,9 +41,10 @@ function App() {
             path="/login"
             element={<Login token={token} updateToken={updateToken} />}
           />
-          <Route path="/listado" element={<MovieTrendList token={token} />} />
-          <Route path="/search" element={<MovieSearchList token={token} />} />
-          <Route path="/detalle" element={<MovieDetail token={token} />} />
+          <Route path="/trending" element={<TrendList token={token} />} />
+          <Route path="/search" element={<SearchList token={token} />} />
+          <Route path="/favorites" element={<FavoritesList token={token} />} />
+          <Route path="/detail" element={<MovieDetail token={token} />} />
         </Routes>
       </main>
       <Footer />

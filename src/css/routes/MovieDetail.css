@@ -53,8 +53,35 @@
 .movie-detail--description {
   line-height: 1.2;
   color: #444444;
+}
+.favorite-movie--button,
+.add-to-favorites--button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "DMSans", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: #222;
+  color: white;
+  margin-top: 0.5rem;
+  transition: 0.2s;
+}
+.add-to-favorites--button {
+  background-color: white;
+  color: #222;
+  border: 1px solid #4f4f4f;
+}
+.favorite-movie--button:hover {
+  border-color: hsl(43, 74%, 40%);
 
-  /* overflow: hidden; */
+  background-color: #333;
+}
+.favorite-movie--crown-logo {
+  width: 0.9rem;
+  margin-right: 0.3rem;
+  -webkit-filter: invert(1);
+  filter: invert(1);
 }
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199.98px) {
