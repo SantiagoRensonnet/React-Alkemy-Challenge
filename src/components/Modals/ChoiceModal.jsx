@@ -4,6 +4,8 @@ import closeLogo from "../../assets/icons/modal/modal-close-icon.svg";
 import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const customStyles = {
   content: {
@@ -38,20 +40,34 @@ const ChoiceModal = ({
   let yesBtn;
   let noBtn;
   let closeBtn;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  //change modal for small devices state and setup
+  const [screenIsSmall, setScreenIsSmall] = useState(
+    window.matchMedia("(max-width: 575.98px)").matches
+  );
+  useEffect(() => {
+    const handler = (e) => {
+      setScreenIsSmall(e.matches);
+      console.log("small device", e.matches);
+    };
+    window
+      .matchMedia("(max-width: 575.98px)")
+      .addEventListener("change", handler);
+  }, []);
 
   function afterOpenModal() {
     if (title) {
       //title style
       title.style.color = "#54595E";
-      title.style.fontSize = "1.8rem";
+      title.style.fontSize = screenIsSmall ? "1.4rem" : "1.8rem";
+
       title.style.fontWeight = "600";
       title.style.marginBottom = "0.5rem";
     }
     if (subtitle) {
       // subtitle style
       subtitle.style.color = "#54595E";
-      subtitle.style.fontSize = "1.2rem";
+      subtitle.style.fontSize = screenIsSmall ? "0.9rem" : "1.2rem";
       subtitle.style.fontWeight = "400";
       subtitle.style.marginBottom = "1rem";
     }
@@ -60,6 +76,8 @@ const ChoiceModal = ({
     choiceContainer.style.width = "100%";
     choiceContainer.style.display = "flex";
     choiceContainer.style.justifyContent = "center";
+    choiceContainer.style.fontSize = screenIsSmall ? "0.9em" : "1.2em";
+
     //yes
     yesBtn.style.backgroundColor = "#4F4F4F";
     yesBtn.style.color = "#F5F5F5";
@@ -73,14 +91,24 @@ const ChoiceModal = ({
     //close button style
     closeBtn.style.alignSelf = "flex-end";
     closeBtn.style.backgroundColor = "#E5E5E5";
-    closeBtn.style.width = "1.5rem";
-    closeBtn.style.height = "1.5rem";
+    closeBtn.style.width = screenIsSmall ? "1.2rem" : "1.5rem";
+    closeBtn.style.height = screenIsSmall ? "1.2rem" : "1.5rem";
     closeBtn.style.borderRadius = "1.8rem";
     closeBtn.style.padding = "4px";
     closeBtn.style.display = "flex";
     closeBtn.style.justifyContent = "center";
     closeBtn.style.alignItems = "center";
   }
+  let modalStyle = screenIsSmall
+    ? {
+        content: {
+          ...customStyles.content,
+          width: "90%",
+          height: "11rem",
+          textAlign: "center",
+        },
+      }
+    : customStyles;
 
   return (
     <>
@@ -88,7 +116,7 @@ const ChoiceModal = ({
         isOpen={openModal}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
+        style={modalStyle}
         contentLabel="Example Modal"
       >
         <button

@@ -26,9 +26,12 @@ export default function Header({
             <div className="initials">SR</div>
           </div>
         )}
-        <h2 className="header--title">Alkemy Challenge</h2>
+        <h2 className="header--title">
+          <span className="first-word">Alkemy</span>{" "}
+          <span className="second-word">Challenge</span>
+        </h2>
       </div>
-      <nav className={`header--navbar `}>
+      <nav className="header--navbar">
         <div className={`header--nav-menu ${burgerActive ? "active" : ""}`}>
           <Link to="/" className="header--nav-item">
             Home
