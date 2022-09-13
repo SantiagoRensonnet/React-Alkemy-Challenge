@@ -91,41 +91,43 @@ export default function MovieList({ token, endPoint = "favorite" }) {
     setHeartWasClicked(true);
   }
 
-  const movieList =
-    endPoint !== "favorite"
-      ? movieData
-          .filter((movie) => movie.overview && movie.poster_path)
-          .map((movie, index) => {
-            const path =
-              "https://image.tmdb.org/t/p/original" + movie.poster_path;
-            const movieImg = movie.poster_path
-              ? { backgroundImage: `url(${path})` }
-              : null;
-            return (
-              <MovieCard
-                maxChar={320}
-                onCardClick={onCardClick}
-                id={movie.id}
-                key={index}
-                image={movieImg}
-                title={movie.original_title}
-                overview={movie.overview}
-                onHeartClick={onHeartClick}
-              />
-            );
-          })
-      : movieData.map((movie, index) => (
-          <MovieCard
-            maxChar={320}
-            onCardClick={onCardClick}
-            id={movie.id}
-            key={index}
-            image={movie.image}
-            title={movie.title}
-            overview={movie.overview}
-            onHeartClick={onHeartClick}
-          />
-        ));
+  if (movieData) {
+    var movieList =
+      endPoint !== "favorite"
+        ? movieData
+            .filter((movie) => movie.overview && movie.poster_path)
+            .map((movie, index) => {
+              const path =
+                "https://image.tmdb.org/t/p/original" + movie.poster_path;
+              const movieImg = movie.poster_path
+                ? { backgroundImage: `url(${path})` }
+                : null;
+              return (
+                <MovieCard
+                  maxChar={320}
+                  onCardClick={onCardClick}
+                  id={movie.id}
+                  key={index}
+                  image={movieImg}
+                  title={movie.original_title}
+                  overview={movie.overview}
+                  onHeartClick={onHeartClick}
+                />
+              );
+            })
+        : movieData.map((movie, index) => (
+            <MovieCard
+              maxChar={320}
+              onCardClick={onCardClick}
+              id={movie.id}
+              key={index}
+              image={movie.image}
+              title={movie.title}
+              overview={movie.overview}
+              onHeartClick={onHeartClick}
+            />
+          ));
+  }
 
   return (
     <>
@@ -135,7 +137,7 @@ export default function MovieList({ token, endPoint = "favorite" }) {
         openModal={modalIsOpen}
         closeModal={closeModal}
       />
-      {movieData.length > 0 ? (
+      {movieData && movieData.length > 0 ? (
         <div className="list-container">
           <div className="table">{movieList}</div>
         </div>
